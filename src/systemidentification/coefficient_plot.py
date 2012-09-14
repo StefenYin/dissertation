@@ -2,13 +2,12 @@
 
 import sys
 sys.path.append('..')
-from load_paths import read
+from load_paths import path
 
 import os
 import cPickle
 from numpy import linspace, sqrt, zeros
 from scipy.io import loadmat
-import matplotlib.pyplot as plt
 from matplotlib import rcParams
 from bicycleid import data, plot, model
 import dtk.bicycle
@@ -58,7 +57,7 @@ for lab, ax in coefPlot.axes.items():
 
 # now add the model identified from the runs with Luke on the Pavilion floor
 # with the canonical realization
-with open(read('pathToIdMat')) as f:
+with open(path('pathToIdMat')) as f:
     idMat = cPickle.load(f)
 
 M, C1, K0, K2, H = idMat['L-P']

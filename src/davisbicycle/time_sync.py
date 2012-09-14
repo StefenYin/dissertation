@@ -3,20 +3,20 @@
 # This script plots the results of the time synchronization of the acceleration
 # signals caused by the bump.
 
+# data paths
+import sys
+sys.path.append('..')
+from load_paths import path
+
 import bicycledataprocessor as bdp
 import os
 import numpy as np
 import matplotlib.pyplot as plt
 
-pathToBicycleMechanics = '/media/Data/Documents/School/UC Davis/Bicycle Mechanics'
-pathToDatabase = os.path.join(pathToBicycleMechanics, 'BicycleDataProcessor/InstrumentedBicycleData.h5')
-pathToParameterData = os.path.join(pathToBicycleMechanics, 'BicycleParameters/data')
-
-dataset = bdp.DataSet(fileName=pathToDatabase)
+dataset = bdp.DataSet(fileName=path('pathToDatabase'))
 dataset.open()
 
-trial = bdp.Run('00690', dataset, pathToParameterData=pathToParameterData,
-        forceRecalc=True)
+trial = bdp.Run('00690', dataset, path('pathToParameters'), forceRecalc=True)
 
 dataset.close()
 

@@ -1,10 +1,15 @@
+#!/usr/bin/env python
+
+# data paths
+import sys
+sys.path.append('..')
+from load_paths import path
+
 from numpy.linalg import norm
 from math import sin, cos
 from scipy import io
 import bicycleparameters as bp
 from dtk import bicycle
-
-pathToParameters = '/media/Data/Documents/School/UC Davis/Bicycle Mechanics/BicycleParameters/data'
 
 rider = 'Luke'
 
@@ -14,7 +19,8 @@ elif rider == 'Charlie' or rider == 'Luke':
     bikeName = 'Rigidcl'
 
 # load the rigid bicycle and seat Luke
-rigidWithRider = bp.Bicycle(bikeName, forceRawCalc=True, pathToData=pathToParameters)
+rigidWithRider = bp.Bicycle(bikeName, forceRawCalc=True,
+        pathToData=path('pathToParameters'))
 rigidWithRider.add_rider(rider, reCalc=True)
 h = rigidWithRider.human
 
@@ -30,7 +36,8 @@ riderPar = {'IBxx': humanInertia[0, 0],
             'yB': humanCoM[1][0],
             'zB': humanCoM[2][0]}
 
-rigid = bp.Bicycle(bikeName, forceRawCalc=True, pathToData=pathToParameters)
+rigid = bp.Bicycle(bikeName, forceRawCalc=True,
+        pathToData=path('pathToParameters'))
 benchmark = bp.rider.combine_bike_rider(rigid.parameters['Benchmark'], riderPar)
 benchmark = bp.io.remove_uncertainties(benchmark)
 par = bicycle.benchmark_to_moore(benchmark)

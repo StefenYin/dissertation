@@ -1,15 +1,20 @@
 #!/usr/bin/env python
 
+# data paths
+import sys
+sys.path.append('..')
+from load_paths import path
+
 import numpy as np
 import bicycleparameters as bp
-from dtk import bicycle
 
-pathToData = '/media/Data/Documents/School/UC Davis/Bicycle Mechanics/BicycleParameters/data'
 speeds = np.linspace(0., 10., num=100)
 
 # compare a bike with rider and bike without rider
-stratos = bp.Bicycle('Stratos', pathToData=pathToData, forceRawCalc=True)
-stratosRider = bp.Bicycle('Stratos', pathToData=pathToData, forceRawCalc=True)
+stratos = bp.Bicycle('Stratos', pathToData=path('pathToParameters'),
+        forceRawCalc=True)
+stratosRider = bp.Bicycle('Stratos', pathToData=path('pathToParameters'),
+        forceRawCalc=True)
 stratosRider.add_rider('Jason')
 compareRider = bp.plot_eigenvalues([stratos, stratosRider], speeds)
 ax = compareRider.axes[0]
@@ -20,12 +25,14 @@ compareRider.savefig('../../figures/parameterstudy/compare-rider-eig.png',
 
 # compare the benchmark parameters to some of the bicycles I measured
 
-benchmark = bp.Bicycle('Benchmark', pathToData=pathToData)
+benchmark = bp.Bicycle('Benchmark', pathToData=path('pathToParameters'))
 
-browser = bp.Bicycle('Browser', pathToData=pathToData, forceRawCalc=True)
+browser = bp.Bicycle('Browser', pathToData=path('pathToParameters'),
+        forceRawCalc=True)
 browser.add_rider('Jason')
 
-stratos = bp.Bicycle('Stratos', pathToData=pathToData, forceRawCalc=True)
+stratos = bp.Bicycle('Stratos', pathToData=path('pathToParameters'),
+        forceRawCalc=True)
 stratos.add_rider('Jason')
 
 benchmarkReal = bp.plot_eigenvalues([benchmark, browser, stratos], speeds)
@@ -41,7 +48,8 @@ bicycleNames = ['Silver',
                 'Pista',
                 'Yellow']
 
-bicycles = [bp.Bicycle(name, pathToData=pathToData) for name in bicycleNames]
+bicycles = [bp.Bicycle(name, pathToData=path('pathToParameters')) for name in
+        bicycleNames]
 
 silverCompare = bp.plot_eigenvalues(bicycles, speeds)
 ax = silverCompare.axes[0]
@@ -52,7 +60,8 @@ silverCompare.savefig('../../figures/parameterstudy/silver-compare.png',
 # compare the yellow bicycle configurations
 silver = bicycles[0]
 yellow = bicycles[-1]
-yellowRev = bp.Bicycle('Yellowrev', pathToData=pathToData, forceRawCalc=True)
+yellowRev = bp.Bicycle('Yellowrev', pathToData=path('pathToParameters'),
+        forceRawCalc=True)
 yellowCompare = bp.plot_eigenvalues([yellow, yellowRev, silver], speeds)
 ax = yellowCompare.axes[0]
 ax.set_ylim(-10, 10)
@@ -60,8 +69,10 @@ yellowCompare.savefig('../../figures/parameterstudy/yellow-compare.png',
         dpi=200)
 
 # compare the browser configurations
-browser = bp.Bicycle('Browser', pathToData=pathToData, forceRawCalc=True)
-browserIns = bp.Bicycle('Browserins', pathToData=pathToData, forceRawCalc=True)
+browser = bp.Bicycle('Browser', pathToData=path('pathToParameters'),
+        forceRawCalc=True)
+browserIns = bp.Bicycle('Browserins', pathToData=path('pathToParameters'),
+        forceRawCalc=True)
 browserCompare = bp.plot_eigenvalues([browser, browserIns], speeds)
 ax = browserCompare.axes[0]
 ax.set_ylim(-10, 10)

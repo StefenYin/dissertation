@@ -3,15 +3,19 @@
 # This script remakes the coordinate time history plots in the ISEA2010 paper
 # with proper sizing and such.
 
+# data paths
+import sys
+sys.path.append('..')
+from load_paths import path
+
+from os.path import join
 import string as st
 import numpy as np
 import matplotlib.pyplot as plt
 
 run = '3017'
 
-stateDir = '/media/Data/Documents/School/TU Delft/MotionCapture/data/npy/states/'
-
-q = np.load(stateDir + run + 'q.npy')
+q = np.load(join(path('pathToStates'), run + 'q.npy'))
 
 # name the states
 qName = ['1 distance to rear wheel contact',

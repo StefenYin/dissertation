@@ -1,6 +1,8 @@
+#!/usr/bin/env python
+
 import sys
 sys.path.append('..')
-from load_paths import read
+from load_paths import path
 
 import os
 import cPickle
@@ -9,7 +11,7 @@ import pandas
 import bicycledataprocessor as bdp
 
 # load in the raw results
-with open(read('pathToGoodRuns')) as f:
+with open(path('pathToGoodRuns')) as f:
     goodRuns = cPickle.load(f)
 
 with open('rollFitPercent.p') as f:

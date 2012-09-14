@@ -1,10 +1,11 @@
 % This script generates both an impulse and frequency response plot for a
 % bicycle with respect to a lateral force applied to the bicycle frame.
 
-addpath('/media/Data/Documents/School/UC Davis/Bicycle Mechanics/HumanControl')
+addpath('..')
+load_paths
+addpath(paths.pathToHumanControl)
 
-pathToFile = ['/media/Data/Documents/School/UC Davis/Bicycle Mechanics/' ...
-    'HumanControl/parameters/RigidJasonPar.txt'];
+pathToFile = [paths.pathToHumanControl '/parameters/RigidJasonPar.txt'];
 
 par = par_text_to_struct(pathToFile);
 

@@ -3,6 +3,12 @@
 # This plots the change in gains computed by our bicycle Human control software
 # for a particular bicycle.
 
+# data paths
+import sys
+sys.path.append('..')
+from load_paths import path
+
+from os.path import join
 import matplotlib.pyplot as plt
 
 def load_gains(fileName):
@@ -17,7 +23,7 @@ def load_gains(fileName):
             data[variables[i]].append(val)
     return data
 
-data = load_gains('/media/Data/Documents/School/UC Davis/Bicycle Mechanics/HumanControl/gains/RigidJasonSteerGains.txt')
+data = load_gains(join(path('pathToGains'), 'RigidJasonSteerGains.txt'))
 
 fig_width = 4.0
 fig_height = 5.0

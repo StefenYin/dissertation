@@ -1,3 +1,10 @@
+#!/usr/bin/env python
+
+# data paths
+import sys
+sys.path.append('..')
+from load_paths import path
+
 from numpy import load
 import matplotlib.pyplot as plt
 
@@ -16,7 +23,7 @@ params = {'axes.labelsize': 8,
           }
 plt.rcParams.update(params)
 
-fileName = '/media/Data/Documents/School/TU Delft/MotionCapture/data/npy/hip/3104Hip.npy'
+fileName = path('pathToHip') + '/3104Hip.npy'
 HipVec = load(fileName)
 
 fig = plt.figure()

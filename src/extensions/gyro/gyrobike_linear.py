@@ -1,5 +1,10 @@
 #!/usr/bin/env python
 
+# data paths
+import sys
+sys.path.append('..')
+from load_paths import path
+
 import numpy as np
 import bicycleparameters as bp
 from dtk import bicycle
@@ -19,8 +24,7 @@ from GyroBike import LinearGyroBike
 gyrobike = LinearGyroBike()
 
 # create the gyro bike
-pathToData='/media/Data/Documents/School/UC Davis/Bicycle Mechanics/BicycleParameters/data/'
-gyro = bp.Bicycle('Gyro', pathToData, forceRawCalc=True)
+gyro = bp.Bicycle('Gyro', path('pathToParameters'), forceRawCalc=True)
 
 # set the model parameters
 benchmarkPar = bp.io.remove_uncertainties(gyro.parameters['Benchmark'])

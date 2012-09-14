@@ -3,12 +3,16 @@
 # Creates restructured text tables with the results of the simulation output
 # percent variance for the set of runs.
 
+import sys
+sys.path.append('..')
+from load_paths import path
+
 import os
 import numpy as np
 from scipy.io import loadmat
 import pandas
 
-directory = '/media/Data/Documents/School/UC Davis/Bicycle Mechanics/BicycleSystemID/scripts/canonicalid'
+directory = os.path.join(path('pathToBicycleID'), 'scripts/canonicalid')
 fit = loadmat(os.path.join(directory, 'output-compare.mat'))
 
 # The simulations of the unstable system may blow up in the time span and the

@@ -1,15 +1,18 @@
 #!/usr/bin/env python
 
+import sys
+sys.path.append('..')
+from load_paths import path
+
 import os
 from scipy.io import loadmat
 import pandas
 import bicycledataprocessor as bdp
 
 # Load in the Matlab data
-pathToBicycleID = '/media/Data/Documents/School/UC Davis/Bicycle Mechanics/BicycleSystemID'
-results = loadmat(pathToBicycleID +
+results = loadmat(path('pathToBicycleID') +
     '/data/riderid/bestControllerIdResults.mat', squeeze_me=True)
-crossover = loadmat(pathToBicycleID +
+crossover = loadmat(path('pathToBicycleID') +
     '/data/riderid/crossoverFrequencies.mat', squeeze_me=True)
 
 # Build a dictionary of all the data

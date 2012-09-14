@@ -1,4 +1,6 @@
-HUMAN_CONTROL_DIR = '/media/Data/Documents/School/UC Davis/Bicycle Mechanics/HumanControl';
+addpath('..')
+load_paths
+HUMAN_CONTROL_DIR = paths.pathToHumanControl;
 addpath(HUMAN_CONTROL_DIR)
 
 % figure options

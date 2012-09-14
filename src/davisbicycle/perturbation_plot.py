@@ -1,16 +1,21 @@
+#!/usr/bin/env python
+
+# Plots an example lateral perturbation time history.
+
+# data paths
+import sys
+sys.path.append('..')
+from load_paths import path
+
 from math import sqrt
 import bicycledataprocessor.main as bdp
 import matplotlib.pyplot as plt
 
-pathToBicycle = '/media/Data/Documents/School/UC Davis/Bicycle Mechanics'
-pathToDatabase = pathToBicycle + '/BicycleDataProcessor/InstrumentedBicycleData.h5'
-pathToParameters = pathToBicycle + '/BicycleParameters/data'
-
-dataset = bdp.DataSet(fileName=pathToDatabase)
+dataset = bdp.DataSet(fileName=path('pathToDatabase'))
 dataset.open()
 
 trialNum = '00312'
-trial = bdp.Run(trialNum, dataset.database, pathToParameters)
+trial = bdp.Run(trialNum, dataset.database, path('pathToParameters'))
 
 dataset.close()
 

@@ -4,7 +4,7 @@ from pybtex.database.input import bibtex
 import matplotlib.pyplot as plt
 
 parser = bibtex.Parser()
-path = '/media/Data/Documents/School/UC Davis/Bicycle Mechanics/Papers/bicycle.bib'
+path = '../../data/bicycle.bib'
 bib_data = parser.parse_file(path)
 years = []
 for entry in bib_data.entries:

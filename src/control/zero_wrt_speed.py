@@ -7,6 +7,11 @@
 # Warning! This script does not work if there are complex zeros, as I haven't
 # figured out how to change the sympy `I` into a numpy complex number.
 
+# data paths
+import sys
+sys.path.append('..')
+from load_paths import path
+
 import numpy as np
 import matplotlib.pyplot as plt
 from sympy import Symbol, Matrix, symbols, eye, zeros, roots
@@ -57,8 +62,7 @@ phiTdeltaZeros = roots(phiTdelta, s, multiple=True)
 deltaTdeltaZeros = roots(deltaTdelta, s, multiple=True)
 
 # Load a bicycle with some parameters and calculate the canonical matrices.
-pathToData = '/media/Data/Documents/School/UC Davis/Bicycle Mechanics/BicycleParameters/data'
-bicycle = bp.Bicycle('Rigidcl', pathToData=pathToData, forceRawCalc=True)
+bicycle = bp.Bicycle('Rigidcl', path('pathToParameters'), forceRawCalc=True)
 bicycle.add_rider('Charlie')
 #bicycle = bp.Bicycle('Benchmark', pathToData=pathToData)
 Mn, C1n, K0n, K2n = bicycle.canonical()

@@ -1,12 +1,17 @@
 #!/usr/bin/env python
 
+# data paths
+import sys
+sys.path.append('..')
+from load_paths import path
+
 import matplotlib.pyplot as plt
 import bicycleparameters as bp
 
 # compare the benchmark parameters to some of the bicycles I measured
-pathToData = '/media/Data/Documents/School/UC Davis/Bicycle Mechanics/BicycleParameters/data'
 
-browser = bp.Bicycle('Browser', pathToData=pathToData, forceRawCalc=True)
+browser = bp.Bicycle('Browser', pathToData=path('pathToParameters'),
+        forceRawCalc=True)
 browser.add_rider('Jason')
 
 goldenRatio = (5**0.5 - 1.0) / 2.0
@@ -31,12 +36,14 @@ speedFig.savefig('../../figures/parameterstudy/bode-speeds.pdf')
 speedFig.savefig('../../figures/parameterstudy/bode-speeds.png', dpi=200)
 
 # compare heavy bicycle to light bicycle
-rigid = bp.Bicycle('Rigid', pathToData=pathToData, forceRawCalc=True)
+rigid = bp.Bicycle('Rigid', pathToData=path('pathToParameters'),
+        forceRawCalc=True)
 rigid.add_rider('Jason', reCalc=True)
 
 # add the rider from the rigid configuration to the pista, this normalizes the
 # rider inertial influence between bicycles
-pista = bp.Bicycle('Pista', pathToData=pathToData, forceRawCalc=True)
+pista = bp.Bicycle('Pista', pathToData=path('pathToParameters'),
+        forceRawCalc=True)
 pista.parameters['Benchmark'] = bp.rider.combine_bike_rider(pista.parameters['Benchmark'],
         rigid.riderPar['Benchmark'])
 

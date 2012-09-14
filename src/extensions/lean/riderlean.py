@@ -1,5 +1,10 @@
 #!/usr/bin/env python
 
+# data paths
+import sys
+sys.path.append('..')
+from load_paths import path
+
 import numpy as np
 import bicycleparameters as bp
 from dtk import bicycle
@@ -19,8 +24,7 @@ from RiderLean import LinearRiderLean
 bike = LinearRiderLean()
 
 # load the benchmark parameters
-pathToData='/media/Data/Documents/School/UC Davis/Bicycle Mechanics/BicycleParameters/data/'
-bikeWithLegs = bp.Bicycle('Browserlegs', pathToData)
+bikeWithLegs = bp.Bicycle('Browserlegs', path('pathToParameters'))
 #bikeWithLegs = bp.Bicycle('Lukelegs', pathToData)
 benchmarkPar = bp.io.remove_uncertainties(bikeWithLegs.parameters['Benchmark'])
 

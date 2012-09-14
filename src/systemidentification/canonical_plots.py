@@ -1,6 +1,8 @@
+#!/usr/bin/env python
+
 import sys
 sys.path.append('..')
-from load_paths import read
+from load_paths import path
 import cPickle
 
 import numpy as np
@@ -19,7 +21,7 @@ params = {'axes.labelsize': 10,
           }
 plt.rcParams.update(params)
 
-pathToIdMat = read('pathToIdMat')
+pathToIdMat = path('pathToIdMat')
 
 with open(pathToIdMat) as f:
     idMat = cPickle.load(f)

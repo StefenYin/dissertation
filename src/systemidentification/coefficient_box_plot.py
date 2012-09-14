@@ -2,7 +2,7 @@
 
 import sys
 sys.path.append('..')
-from load_paths import read
+from load_paths import path
 
 import cPickle
 import numpy as np
@@ -49,7 +49,7 @@ for i, B in enumerate(m['inputMatrices']):
     inputMats[i] = B[:, 1:]
 
 # best identified model
-with open(read('pathToIdMat')) as f:
+with open(path('pathToIdMat')) as f:
     idMat = cPickle.load(f)
 
 M, C1, K0, K2, H = idMat['L-P']

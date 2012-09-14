@@ -1,14 +1,20 @@
+#!/usr/bin/env python
+
+# data paths
+import sys
+sys.path.append('..')
+from load_paths import path
+
 import os
 import bicycleparameters as bp
 from bicycleparameters.tables import Table
 
-pathToData = '/media/Data/Documents/School/UC Davis/Bicycle Mechanics/BicycleParameters/data'
 pathToTables = '../../tables/physicalparameters'
 
 def create_tables(bikeNames, groupName):
     bikes = []
     for bike in bikeNames:
-        bikes.append(bp.Bicycle(bike, pathToData=pathToData,
+        bikes.append(bp.Bicycle(bike, pathToData=path('pathToParameters'),
             forceRawCalc=True))
 
     for typ in ['Measured', 'Benchmark']:

@@ -25,7 +25,9 @@ function [data, delta0, omega0] = steer_dynamics_iddata(fileName, outputs, input
 % omega0 : double
 %   The initial value of the steer rate.
 
-pathToData = '/media/Data/Documents/School/UC Davis/Bicycle Mechanics/BicycleDataProcessor/exports/mat';
+addpath('..')
+load_paths
+pathToData = [paths.pathToBicycleDataProcessor '/exports/mat'];
 
 runData = load([pathToData filesep fileName]);
 

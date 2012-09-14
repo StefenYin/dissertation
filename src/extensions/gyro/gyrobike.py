@@ -3,6 +3,11 @@
 # This file generates a non-linear simulation of the GyroBike at low speeds and
 # plots the results.
 
+# data paths
+import sys
+sys.path.append('..')
+from load_paths import path
+
 import pickle
 from numpy import pi, sqrt
 import matplotlib.pyplot as plt
@@ -28,8 +33,7 @@ except IOError:
     gyroNonLinear = GyroBike()
 
     # load the benchmark parameters
-    pathToData='/media/Data/Documents/School/UC Davis/Bicycle Mechanics/BicycleParameters/data/'
-    gyro = bp.Bicycle('Gyro', pathToData, forceRawCalc=True)
+    gyro = bp.Bicycle('Gyro', path('pathToParameters'), forceRawCalc=True)
     gyro.add_rider('Child', reCalc=True)
     benchmarkPar = bp.io.remove_uncertainties(gyro.parameters['Benchmark'])
     # convert to my parameter set

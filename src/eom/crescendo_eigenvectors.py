@@ -1,5 +1,9 @@
 #!/usr/bin/env python
 
+# data paths
+import sys
+sys.path.append('..')
+from load_paths import path
 # dependencies
 import numpy as np
 import bicycleparameters as bp
@@ -21,8 +25,7 @@ from Whipple import LinearWhipple
 whip = LinearWhipple()
 
 # load the benchmark parameters
-pathToData='/media/Data/Documents/School/UC Davis/Bicycle Mechanics/BicycleParameters/data/'
-crescendo = bp.Bicycle('Crescendo', pathToData=pathToData, forceRawCalc=True)
+crescendo = bp.Bicycle('Crescendo', path('pathToParameters'), forceRawCalc=True)
 benchmarkPar = bp.io.remove_uncertainties(crescendo.parameters['Benchmark'])
 # convert to my parameter set
 moorePar = bicycle.benchmark_to_moore(benchmarkPar, oldMassCenter=False)

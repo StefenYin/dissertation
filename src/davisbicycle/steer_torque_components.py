@@ -1,15 +1,18 @@
+#!/usr/bin/env python
+
+# data paths
+import sys
+sys.path.append('..')
+from load_paths import path
+
 import bicycledataprocessor as bdp
 import matplotlib.pyplot as plt
 from math import sqrt
 
-pathToBicycle = '/media/Data/Documents/School/UC Davis/Bicycle Mechanics'
-pathToDatabase = pathToBicycle + '/BicycleDataProcessor/InstrumentedBicycleData.h5'
-pathToParameters = pathToBicycle + '/BicycleParameters/data'
-
-dataset = bdp.DataSet(fileName=pathToDatabase)
+dataset = bdp.DataSet(fileName=path('pathToDatabase'))
 dataset.open()
 
-trial = bdp.Run('00700', dataset, pathToParameters, forceRecalc=True)
+trial = bdp.Run('00700', dataset, path('pathToParameters'), forceRecalc=True)
 
 dataset.close()
 

@@ -1,16 +1,19 @@
+#!/usr/bin/env python
+
 import sys
 sys.path.append('..')
-from load_paths import read
+from load_paths import path
+
 import cPickle
 import numpy as np
 import matplotlib.pyplot as plt
 import bicycledataprocessor as bdp
 from canonicalbicycleid import canonical_bicycle_id as cbi
 
-with open(read('pathToGoodRuns')) as f:
+with open(path('pathToGoodRuns')) as f:
     goodRuns = cPickle.load(f)
 
-with open(read('pathToIdMat')) as f:
+with open(path('pathToIdMat')) as f:
     idMat = cPickle.load(f)
 
 dataset = bdp.DataSet()

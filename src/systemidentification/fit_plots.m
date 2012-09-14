@@ -1,4 +1,6 @@
-PATH_TO_BICYCLE_SYSTEM_ID = '/media/Data/Documents/School/UC Davis/Bicycle Mechanics/BicycleSystemID';
+addpath('..')
+load_paths
+PATH_TO_BICYCLE_SYSTEM_ID = paths.pathToBicycleID;
 addpath([PATH_TO_BICYCLE_SYSTEM_ID '/src/matlab'])
 dataDir = [PATH_TO_BICYCLE_SYSTEM_ID filesep 'scripts' filesep 'statespaceid' filesep 'exports'];
 

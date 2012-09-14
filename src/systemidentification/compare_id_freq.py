@@ -4,14 +4,14 @@
 
 import sys
 sys.path.append('..')
-from load_paths import read
+from load_paths import path
 import cPickle
 
 import numpy as np
 import matplotlib.pyplot as plt
 from dtk import bicycle, control
 
-pathToIdMat = read('pathToIdMat')
+pathToIdMat = path('pathToIdMat')
 
 with open(pathToIdMat) as f:
     idMat = cPickle.load(f)

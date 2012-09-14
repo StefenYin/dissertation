@@ -1,18 +1,17 @@
 #!/usr/bin/env python
-import os
+
+import sys
+sys.path.append('..')
+from load_paths import path
+
 import cPickle
 from canonicalbicycleid import canonical_bicycle_id as cbi
 import pandas
 
-# Specify the data files
-dataDir = '/media/Data/Documents/School/UC Davis/Bicycle Mechanics/CanonicalBicycleID/data'
-pathToIDMat = os.path.join(dataDir, 'idMatrices.p')
-pathToCovar = os.path.join(dataDir, 'covarMatrices.p')
-
-with open(pathToIDMat) as f:
+with open(path('pathToIDMat')) as f:
     idMat = cPickle.load(f)
 
-with open(pathToCovar) as f:
+with open(path('pathToCovarMat')) as f:
     covMat = cPickle.load(f)
 fNames = ['one', 'two', 'three']
 
@@ -36,7 +35,7 @@ for n, r, s in zip(fNames, roll, steer):
             n + '.rst')
 
 # this computes the trail given the identified C1dp parameter
-rigid = cbi.bp.Bicycle('Rigid', '/media/Data/Documents/School/UC Davis/Bicycle Mechanics/BicycleParameters/data')
+rigid = cbi.bp.Bicycle('Rigid', path('pathToParameters'))
 p = cbi.bp.io.remove_uncertainties(rigid.parameters['Benchmark'])
 SF = p['IFyy'] / p['rF']
 SR = p['IRyy'] / p['rR']
